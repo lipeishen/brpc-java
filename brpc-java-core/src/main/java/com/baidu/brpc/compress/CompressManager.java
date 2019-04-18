@@ -17,7 +17,6 @@
 package com.baidu.brpc.compress;
 
 import com.baidu.brpc.protocol.Options;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -29,7 +28,7 @@ public class CompressManager {
 
     public static CompressManager getInstance() {
         if (instance == null) {
-            synchronized(CompressManager.class) {
+            synchronized (CompressManager.class) {
                 if (instance == null) {
                     instance = new CompressManager();
                 }
@@ -38,8 +37,7 @@ public class CompressManager {
         return instance;
     }
 
-    // why not  use private methodg
-    protected CompressManager() {
+    private CompressManager() {
         compressArray = new Compress[MAX_COMPRESS_NUM];
         compressArray[Options.CompressType.COMPRESS_TYPE_NONE_VALUE] = new NoneCompress();
         compressArray[Options.CompressType.COMPRESS_TYPE_GZIP_VALUE] = new GzipCompress();
